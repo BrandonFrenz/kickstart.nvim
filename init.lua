@@ -953,17 +953,35 @@ require('lazy').setup({
       -- add any options here
     },
   },
-  -- require('custom.plugins.nvim-ts-autotag').setup({
-  --   opts = {
-  --     -- Defaults
-  --     enable_close = true, -- Auto close tags
-  --     enable_rename = true, -- Auto rename pairs of tags
-  --     enable_close_on_slash = false -- Auto close on trailing </
-  --   },
-  -- -- Also override individual filetype configs, these take priority.
-  -- -- Empty by default, useful if one of the "opts" global settings
-  -- -- doesn't work well in a specific filetype
-  -- }),
+  -- {
+  --   'windwp/nvim-ts-autotag',
+  --   config = function()
+  --     require('nvim-ts-autotag').setup()
+  --   end,
+  -- },
+  {
+    'alvan/vim-closetag',
+  },
+  {
+    'github/copilot.vim',
+  },
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
+    dependencies = {
+      { 'zbirenbaum/copilot.lua' }, -- or github/copilot.vim
+      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+    },
+    build = 'make tiktoken', -- Only on MacOS or Linux
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
+  -- {
+  --   'joeveiga/ng.nvim',
+  -- },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
